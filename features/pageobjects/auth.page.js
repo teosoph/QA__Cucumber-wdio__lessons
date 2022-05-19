@@ -84,5 +84,24 @@ class AuthPage {
   }
 
   // Actions
+  createAccount = async (emailId, address) => {
+    await this.input_createAccountEmail.waitForExist({ timeout: 5000 });
+    await this.input_createAccountEmail.setValue(emailId);
+    await this.btn_createAccount.click();
+
+    const gender1 = await $("//input[@id='id_gender1']");
+    await gender1.waitForExist({ timeout: 15000 });
+    await this.radioBtn_gender1.click();
+
+    await this.input_userCustomerFirstname.setValue(address.firstname);
+    await this.input_userCustomerLastname.setValue(address.lastname);
+    await this.input_userEmail.setValue(emailId);
+    await this.input_userPassword.setValue("password123");
+
+    // Date of Birth
+    await this.dropDownMenu_dateOfBirth_days.selectByIndex(12);
+    await this.dropDownMenu_dateOfBirth_months.selectByAttribute("value", "3");
+    await this.dropDownMenu_dateOfBirth_years.selectByAttribute("value", "1992");
+  };
 }
 export default new AuthPage();
