@@ -1,0 +1,26 @@
+{
+  "name": "qa__cucumber-wdio__lessons",
+  "version": "1.0.0",
+  "description": "Cucumber Webdriver Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Teo",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.17.12",
+    "@babel/preset-env": "^7.17.12",
+    "@babel/register": "^7.17.7",
+    "@wdio/cli": "^7.19.7",
+    "@wdio/cucumber-framework": "^7.19.7",
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.7",
+    "chromedriver": "^101.0.0",
+    "wdio-chromedriver-service": "^7.3.2"
+  },
+  "dependencies": {
+    "chai": "^4.3.6",
+    "cucumber": "^6.0.7"
+  }
+}
