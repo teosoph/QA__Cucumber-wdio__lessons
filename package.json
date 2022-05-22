@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "chai": "^4.3.6",
-    "cucumber": "^6.0.7"
+    "cucumber": "^6.0.7",
+    "faker": "^6.6.6"
   }
 }
