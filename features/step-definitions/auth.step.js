@@ -18,6 +18,14 @@ Then(/^Create an account with random username$/, async () => {
     address2: faker.random.alphaNumeric(5),
   };
 
+  global.ShareVariables.email = emailId;
+  global.ShareVariables.address = addressObj;
+
   await authPage.createAccount(emailId, addressObj);
-  await browser.pause(10000);
+  // await browser.pause(10000);
 });
+
+// Given(/^Login using newly created credentials$/, async () => {
+//   console.log("-------- Login --------");
+//   await authPage.signIn(global.ShareVariables.email);
+// });

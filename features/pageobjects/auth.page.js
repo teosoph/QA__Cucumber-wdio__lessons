@@ -84,6 +84,18 @@ class AuthPage {
     return $("//span[normalize-space()='Register']");
   }
 
+  // ======= User Login Locators ========
+
+  get input_login_Email() {
+    return $("//input[@id='email']");
+  }
+  get input_login_Password() {
+    return $("//input[@id='passwd']");
+  }
+  get btn_SubmitLogin() {
+    return $("//button[@id='SubmitLogin']");
+  }
+
   // ============= Actions ==============================
   createAccount = async (emailId, addressObj) => {
     await this.input_createAccountEmail.waitForExist({ timeout: 5000 });
@@ -97,27 +109,37 @@ class AuthPage {
     const gender1 = await $("//input[@id='id_gender1']");
     await gender1.waitForExist({ timeout: 15000 });
     await this.radioBtn_gender1.click();
+    await browser.pause(2000);
 
     await this.input_userCustomerFirstname.setValue(addressObj.firstname);
+    await browser.pause(2000);
     await this.input_userCustomerLastname.setValue(addressObj.lastname);
+    await browser.pause(2000);
     await this.input_userEmail.setValue(emailId);
+    await browser.pause(2000);
     await this.input_userPassword.setValue("password123");
+    await browser.pause(2000);
 
     // Date of Birth
     await this.dropDownMenu_dateOfBirth_days.selectByIndex(12);
+    await browser.pause(2000);
     await this.dropDownMenu_dateOfBirth_months.selectByAttribute("value", "3");
+    await browser.pause(2000);
     await this.dropDownMenu_dateOfBirth_years.selectByAttribute("value", "1992");
+    await browser.pause(2000);
 
     await this.checkBox_newsletter.click();
+    await browser.pause(2000);
     await this.checkBox_uniformOption.click();
+    await browser.pause(2000);
 
     // User Address
     await this.input_address_userFirstname.setValue(addressObj.firstname);
     await browser.pause(2000);
     await this.input_address_userLastname.setValue(addressObj.lastname);
     await browser.pause(2000);
-    // await this.input_address_userCompany.setValue(addressObj.company);
-    await this.input_address_userCompany.setValue("company123");
+    await this.input_address_userCompany.setValue(addressObj.company);
+    // await this.input_address_userCompany.setValue("company123");
     await browser.pause(2000);
     await this.input_address_userAddress1.setValue(addressObj.address1);
     await browser.pause(2000);
@@ -133,16 +155,23 @@ class AuthPage {
     await browser.pause(2000);
     await this.input_userAdditionalInfo.setValue("This is my additional information");
     await browser.pause(2000);
-    await this.input_contacts_userPhone.setValue("+380677200000");
+    await this.input_contacts_userPhone.setValue("12334566");
     await browser.pause(2000);
-    await this.input_contacts_userMobilePhone.setValue("+380444440000");
+    await this.input_contacts_userMobilePhone.setValue("+65 94657845");
     await browser.pause(2000);
     await this.input_userAssignAddressAlias.setValue("My address");
-    await browser.pause(10000);
+    await browser.pause(2000);
 
     //  Click the "Register" button
     await this.btn_register.click();
     await browser.pause(10000);
+  };
+
+  // SignIn using newly created account
+  signIn = async (userEmail) => {
+    await this.input_login_Email.setValue(userEmail);
+    await this.input_login_Password.setValue("password123");
+    await this.btn_SubmitLogin.click();
   };
 }
 export default new AuthPage();
