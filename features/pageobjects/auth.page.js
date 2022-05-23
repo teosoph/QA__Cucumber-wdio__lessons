@@ -1,5 +1,7 @@
 class AuthPage {
   // ====== Page objects Locators =======
+
+  // ==== SignIn Page ====
   get input_createAccountEmail() {
     return $("//input[@id='email_create']");
   }
@@ -60,7 +62,7 @@ class AuthPage {
   get dropDownMenu_address_userState() {
     return $("//select[@id='id_state']");
   }
-  get input_address_userPostcode() {
+  get input_address_userPostalCode() {
     return $("//input[@id='postcode']");
   }
   get dropDownMenu_address_userCountry() {
@@ -85,7 +87,11 @@ class AuthPage {
   // ============= Actions ==============================
   createAccount = async (emailId, addressObj) => {
     await this.input_createAccountEmail.waitForExist({ timeout: 5000 });
+    await browser.pause(2000);
+
     await this.input_createAccountEmail.setValue(emailId);
+    await browser.pause(2000);
+
     await this.btn_createAccount.click();
 
     const gender1 = await $("//input[@id='id_gender1']");
@@ -107,21 +113,36 @@ class AuthPage {
 
     // User Address
     await this.input_address_userFirstname.setValue(addressObj.firstname);
+    await browser.pause(2000);
     await this.input_address_userLastname.setValue(addressObj.lastname);
-    await this.input_address_userCompany.setValue(addressObj.company);
+    await browser.pause(2000);
+    // await this.input_address_userCompany.setValue(addressObj.company);
+    await this.input_address_userCompany.setValue("company123");
+    await browser.pause(2000);
     await this.input_address_userAddress1.setValue(addressObj.address1);
+    await browser.pause(2000);
     await this.input_address_userAddress2.setValue(addressObj.address2);
+    await browser.pause(2000);
     await this.input_address_userCity.setValue("Singapore");
+    await browser.pause(2000);
     await this.dropDownMenu_address_userState.selectByIndex(2);
+    await browser.pause(2000);
     await this.input_address_userPostalCode.setValue("00000");
-    await this.dropDownMenu_address_userCountry.setValue(addressObj.country);
+    await browser.pause(2000);
+    await this.dropDownMenu_address_userCountry.selectByIndex(1);
+    await browser.pause(2000);
     await this.input_userAdditionalInfo.setValue("This is my additional information");
-    await this.input_address_userPhone.setValue("+380677200000");
-    await this.input_address_userMobilePhone.setValue("+380444440000");
+    await browser.pause(2000);
+    await this.input_contacts_userPhone.setValue("+380677200000");
+    await browser.pause(2000);
+    await this.input_contacts_userMobilePhone.setValue("+380444440000");
+    await browser.pause(2000);
     await this.input_userAssignAddressAlias.setValue("My address");
+    await browser.pause(10000);
 
     //  Click the "Register" button
     await this.btn_register.click();
+    await browser.pause(10000);
   };
 }
 export default new AuthPage();

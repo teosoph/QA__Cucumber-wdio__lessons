@@ -3,14 +3,14 @@ import commonPage from "../pageobjects/common.page";
 import homePage from "../pageobjects/home.page";
 
 Given(/^I am on the home page$/, async () => {
-  commonPage.openHomePage();
+  await commonPage.openHomePage();
 
-  await expect(homePage.btn_SignIn).toBePresent();
-  await expect(homePage.btn_ContactUs).toBePresent();
-  await expect(homePage.img_Logo).toBePresent();
+  await expect(homePage.btn_SignIn).toBeDisplayed();
+  await expect(homePage.btn_ContactUs).toBeDisplayed();
+  await expect(homePage.img_Logo).toBeDisplayed();
 });
 
 When(/^Navigate to SignUp page$/, async () => {
-  homePage.clickOnSignInBtn();
+  await homePage.clickOnSignInBtn();
   console.log("-------- Navigating to Authentication page --------");
 });

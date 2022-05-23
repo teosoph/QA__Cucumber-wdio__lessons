@@ -4,7 +4,7 @@
   "description": "Cucumber Webdriver Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "wdio run wdio.conf.js"
   },
   "author": "Teo",
   "license": "ISC",
@@ -22,6 +22,7 @@
   "dependencies": {
     "chai": "^4.3.6",
     "cucumber": "^6.0.7",
-    "faker": "^6.6.6"
+    "expect-webdriverio": "^3.4.0",
+    "faker": "^5.5.3"
   }
 }

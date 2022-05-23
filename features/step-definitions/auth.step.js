@@ -10,7 +10,6 @@ Then(/^Create an account with random username$/, async () => {
   const emailId = `myemail_${randomStr}@gmail.com`;
 
   // Address
-
   const addressObj = {
     firstname: faker.name.firstName(),
     lastname: faker.name.lastName(),
@@ -18,5 +17,7 @@ Then(/^Create an account with random username$/, async () => {
     address1: faker.address.streetAddress(),
     address2: faker.random.alphaNumeric(5),
   };
-  authPage.createAccount(emailId, addressObj);
+
+  await authPage.createAccount(emailId, addressObj);
+  await browser.pause(10000);
 });

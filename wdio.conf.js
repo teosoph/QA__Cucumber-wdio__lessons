@@ -213,8 +213,10 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
-    require("chai");
-    global.expect = chai.expect;
+    // require("chai");
+    // require("expect-webdriverio");
+    // global.wdioExpect = global.expect;
+    // global.expect = chai.expect;
   },
   /**
    * Runs before a WebdriverIO command gets executed.
