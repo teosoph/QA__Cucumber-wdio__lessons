@@ -106,8 +106,10 @@ class AuthPage {
 
     await this.btn_createAccount.click();
 
-    const gender1 = await $("//input[@id='id_gender1']");
-    await gender1.waitForExist({ timeout: 15000 });
+    // const gender1 = await $("//input[@id='id_gender1']");
+    // await gender1.waitForExist({ timeout: 5000 });
+
+    await this.radioBtn_gender1.waitForExist({ timeout: 5000 });
     await this.radioBtn_gender1.click();
     await browser.pause(2000);
 
