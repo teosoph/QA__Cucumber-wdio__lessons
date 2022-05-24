@@ -22,7 +22,6 @@ Then(/^Create an account with random username$/, async () => {
   global.ShareVariables.address = addressObj;
 
   await authPage.createAccount(emailId, addressObj);
-  // await browser.pause(10000);
 });
 
 // Given(/^Login using newly created credentials$/, async () => {

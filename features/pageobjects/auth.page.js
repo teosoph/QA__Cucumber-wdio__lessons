@@ -99,74 +99,71 @@ class AuthPage {
   // ============= Actions ==============================
   createAccount = async (emailId, addressObj) => {
     await this.input_createAccountEmail.waitForExist({ timeout: 5000 });
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     await this.input_createAccountEmail.setValue(emailId);
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     await this.btn_createAccount.click();
 
-    // const gender1 = await $("//input[@id='id_gender1']");
-    // await gender1.waitForExist({ timeout: 5000 });
-
+    // === User Information ===
     await this.radioBtn_gender1.waitForExist({ timeout: 5000 });
     await this.radioBtn_gender1.click();
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     await this.input_userCustomerFirstname.setValue(addressObj.firstname);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_userCustomerLastname.setValue(addressObj.lastname);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_userEmail.setValue(emailId);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_userPassword.setValue("password123");
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     // Date of Birth
     await this.dropDownMenu_dateOfBirth_days.selectByIndex(12);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.dropDownMenu_dateOfBirth_months.selectByAttribute("value", "3");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.dropDownMenu_dateOfBirth_years.selectByAttribute("value", "1992");
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     await this.checkBox_newsletter.click();
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.checkBox_uniformOption.click();
-    await browser.pause(2000);
+    await browser.pause(1000);
 
     // User Address
     await this.input_address_userFirstname.setValue(addressObj.firstname);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userLastname.setValue(addressObj.lastname);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userCompany.setValue(addressObj.company);
-    // await this.input_address_userCompany.setValue("company123");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userAddress1.setValue(addressObj.address1);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userAddress2.setValue(addressObj.address2);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userCity.setValue("Singapore");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.dropDownMenu_address_userState.selectByIndex(2);
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_address_userPostalCode.setValue("00000");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.dropDownMenu_address_userCountry.selectByIndex(1);
-    await browser.pause(2000);
-    await this.input_userAdditionalInfo.setValue("This is my additional information");
-    await browser.pause(2000);
+    await browser.pause(1000);
+    await this.input_userAdditionalInfo.setValue("This is my additional information: ${addressObj.address1}");
+    await browser.pause(1000);
     await this.input_contacts_userPhone.setValue("12334566");
-    await browser.pause(2000);
+    await browser.pause(1000);
     await this.input_contacts_userMobilePhone.setValue("+65 94657845");
-    await browser.pause(2000);
-    await this.input_userAssignAddressAlias.setValue("My address");
-    await browser.pause(2000);
+    await browser.pause(1000);
+    await this.input_userAssignAddressAlias.setValue(`My address`);
+    await browser.pause(1000);
 
     //  Click the "Register" button
     await this.btn_register.click();
-    await browser.pause(10000);
+    await browser.pause(4000);
   };
 
   // SignIn using newly created account
