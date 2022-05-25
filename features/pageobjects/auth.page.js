@@ -96,18 +96,21 @@ class AuthPage {
     return $("//button[@id='SubmitLogin']");
   }
 
-  // ============= Actions ==============================
+  // ========================== Actions ==============================
+
+  // ======== TC-001 Create a new user/SignUp =========
   createAccount = async (emailId, addressObj) => {
     await this.input_createAccountEmail.waitForExist({ timeout: 5000 });
     await browser.pause(1000);
 
     await this.input_createAccountEmail.setValue(emailId);
+    console.log("===================== User email:", emailId);
     await browser.pause(1000);
 
     await this.btn_createAccount.click();
 
     // === User Information ===
-    await this.radioBtn_gender1.waitForExist({ timeout: 5000 });
+    await this.radioBtn_gender1.waitForExist({ timeout: 15000 });
     await this.radioBtn_gender1.click();
     await browser.pause(1000);
 
@@ -127,7 +130,6 @@ class AuthPage {
     await browser.pause(1000);
     await this.dropDownMenu_dateOfBirth_years.selectByAttribute("value", "1992");
     await browser.pause(1000);
-
     await this.checkBox_newsletter.click();
     await browser.pause(1000);
     await this.checkBox_uniformOption.click();
@@ -139,6 +141,7 @@ class AuthPage {
     await this.input_address_userLastname.setValue(addressObj.lastname);
     await browser.pause(1000);
     await this.input_address_userCompany.setValue(addressObj.company);
+    await browser.pause(1000);
     await browser.pause(1000);
     await this.input_address_userAddress1.setValue(addressObj.address1);
     await browser.pause(1000);
@@ -152,13 +155,13 @@ class AuthPage {
     await browser.pause(1000);
     await this.dropDownMenu_address_userCountry.selectByIndex(1);
     await browser.pause(1000);
-    await this.input_userAdditionalInfo.setValue("This is my additional information: ${addressObj.address1}");
+    await this.input_userAdditionalInfo.setValue("This is my additional information");
     await browser.pause(1000);
     await this.input_contacts_userPhone.setValue("12334566");
     await browser.pause(1000);
     await this.input_contacts_userMobilePhone.setValue("+65 94657845");
     await browser.pause(1000);
-    await this.input_userAssignAddressAlias.setValue(`My address`);
+    await this.input_userAssignAddressAlias.setValue("My address");
     await browser.pause(1000);
 
     //  Click the "Register" button
@@ -166,11 +169,13 @@ class AuthPage {
     await browser.pause(4000);
   };
 
-  // SignIn using newly created account
+  // ============== TC-002 Sign In with newly created user credentials
+  // ======= SignIn using newly created account ========
   signIn = async (userEmail) => {
     await this.input_login_Email.setValue(userEmail);
     await this.input_login_Password.setValue("password123");
     await this.btn_SubmitLogin.click();
+    await browser.pause(24000);
   };
 }
 export default new AuthPage();
