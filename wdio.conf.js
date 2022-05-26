@@ -237,6 +237,8 @@ exports.config = {
       email: "",
       address: {},
     };
+
+    browser.maximizeWindow();
   },
   /**
    *

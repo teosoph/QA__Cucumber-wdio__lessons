@@ -166,7 +166,7 @@ class AuthPage {
 
     //  Click the "Register" button
     await this.btn_register.click();
-    await browser.pause(4000);
+    await browser.pause(2000);
   };
 
   // ============== TC-002 Sign In with newly created user credentials
@@ -175,7 +175,7 @@ class AuthPage {
     await this.input_login_Email.setValue(userEmail);
     await this.input_login_Password.setValue("password123");
     await this.btn_SubmitLogin.click();
-    await browser.pause(24000);
+    await browser.pause(2000);
   };
 }
 export default new AuthPage();

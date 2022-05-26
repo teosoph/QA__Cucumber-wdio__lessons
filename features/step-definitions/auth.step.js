@@ -18,7 +18,7 @@ Then(/^Create an account with random username$/, async () => {
     lastname: faker.name.lastName(),
     company: faker.company.companyName(),
     address1: faker.address.streetAddress(),
-    address2: faker.random.alphaNumeric(5),
+    address2: faker.random.alphaNumeric(2),
   };
 
   global.ShareVariables.email = emailId;
